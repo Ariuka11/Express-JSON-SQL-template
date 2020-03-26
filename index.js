@@ -2,6 +2,8 @@ const express = require("express")
 const cors = require("cors")
 const helmet = require('helmet')
 const cookieParser = require("cookie-parser")
+const userRouter = require('./routes/users/users-router')
+const authRouter = require('./auth/auth-router')
 
 const server = express()
 const port = process.env.PORT || 5000
@@ -10,6 +12,9 @@ server.use(cors())
 server.use(helmet())
 server.use(express.json())
 server.use(cookieParser())
+
+server.use("/users", userRouter)
+server.use('/', authRouter)
 
 server.get("/", (req, res) => {
 	res.json({
