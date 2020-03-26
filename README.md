@@ -1,0 +1,1 @@
+npx knex migrate:make *name* --env=dev or test
